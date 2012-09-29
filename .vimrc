@@ -1,4 +1,14 @@
 " ********** vim の設定 ********** "
+set nocompatible
+
+filetype off
+
+set rtp+=~/dotfiles/vimfiles/vundle.git/
+call vundle#rc()
+
+Bundle 'Shougo/neocomplcache'
+Bundle 'thinca/vim-quickrun'
+
 "
 filetype plugin indent on
 "
