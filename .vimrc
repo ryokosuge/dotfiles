@@ -217,12 +217,35 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 " AutoComplPop を無効かする設定
 let g:acp_enableAtStartup=0
 " neocomplcache を起動時に有効化
-let g:neocomplcache_enable_at_atartup=1
+"let g:Neocomplcache_EnableAtStartup=1
+"let g:NeoComplCache_EnableAtStartup = 1
+let g:neocomplcache_enable_at_startup = 1
 " neocomplcache の smart case 機能を有効化
-let g:neocomplcache_enable_smart_case=1
+let g:Neocomplcache_SmartCase=1
 " neocomplcache の calme case 機能を有効化
-let g:neocomplcache_enable_camel_case_completion=1
+let g:Neocomplcache_EnableCamelCaseCompletion=1
 " neocomplcache の _区切りの補完を有効化
-let g:neocomplcache_enable_underbar_completion=1
+let g:Neocomplcache_EnableUnderbarCompletion=1
 " neocomplcache のシンタックスをキャッシュするときの最小文字を3にする
-let g:neocomplcache_min_syntax_length=3
+let g:Neocomplcache_MinSyntaxLength=3
+" manual completion の長さの設定
+let g:NeoComplCache_ManualCompletionStartLength =0
+" Print caching percent in statusline
+let g:NeoComplCache_CahingPercentInStatusline=1
+
+" 辞書の登録
+let g:NeoComplCache_DictionaryFileTypeLists = {
+    \ 'default' : '',
+    \ }
+
+" Define Keyword.
+if !exists('g:NeoComplCache_KeywordPatterns')
+    let g:NeoComplCache_KeywordPatterns = {}
+endif
+
+let g:NeoComplCache_KeywordPatterns['default'] = '\v\h\w*'
+let g:NeoComplCache_SnippetsDir=$HOME.'/snippets'
+
+noremap <C-N><C-O><C-E> :NeoComplCacheEnable<CR>
+noremap <C-N><C-O><C-D> :NeoComplCacheEnable<CR>
+
