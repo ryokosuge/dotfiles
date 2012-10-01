@@ -19,7 +19,6 @@ Bundle 'othree/html5.vim'
 Bundle 'hail2u/vim-css3-syntax'
 " ********** vim-scriptにあるプラグイン ********** "
 " ex) 'file_name'
-Bundle 'jquery.vim'
 " ********** githubにないプラグイン ********** "
 " ex) 'git:// fullpath '
 syntax on
