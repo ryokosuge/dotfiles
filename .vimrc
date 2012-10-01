@@ -19,6 +19,7 @@ Bundle 'othree/html5.vim'
 Bundle 'hail2u/vim-css3-syntax'
 " ********** vim-scriptにあるプラグイン ********** "
 " ex) 'file_name'
+Bundle 'jquery.vim'
 " ********** githubにないプラグイン ********** "
 " ex) 'git:// fullpath '
 syntax on
@@ -183,7 +184,7 @@ augroup END
 "-------------------------------------------------------------------------------
 " ファイルエクスプローラーの横幅
 :let s:split_width=100
-nnoremap <C-O><C-P> :Opsplore<CR>
+noremap <C-O><C-P> :Opsplore<CR>
 
 "-------------------------------------------------------------------------------
 """ quickbuf プラグイン
