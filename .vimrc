@@ -66,7 +66,7 @@ set nowrapscan
 "" バックアップファイルの設定
 "-------------------------------------------------------------------------------
 set backup
-set backupdir=.vim-backup
+set backupdir=~/dotfiles/.vim-backup
 let&directory=&backupdir
 "-------------------------------------------------------------------------------
 "" ファイルの種類とomni
