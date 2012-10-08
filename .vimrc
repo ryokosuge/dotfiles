@@ -17,8 +17,13 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'Shougo/unite.vim'
 Bundle 'othree/html5.vim'
 Bundle 'hail2u/vim-css3-syntax'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-cucumber'
+Bundle 'itspriddle/vim-javascript-indent'
 " ********** vim-scriptにあるプラグイン ********** "
 " ex) 'file_name'
+Bundle 'JavaScript-syntax'
 " ********** githubにないプラグイン ********** "
 " ex) 'git:// fullpath '
 syntax on
