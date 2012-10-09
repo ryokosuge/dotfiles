@@ -230,8 +230,6 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 " AutoComplPop を無効かする設定
 let g:acp_enableAtStartup=0
 " neocomplcache を起動時に有効化
-"let g:Neocomplcache_EnableAtStartup=1
-"let g:NeoComplCache_EnableAtStartup = 1
 let g:neocomplcache_enable_at_startup = 1
 " neocomplcache の smart case 機能を有効化
 let g:Neocomplcache_SmartCase=1
@@ -260,5 +258,5 @@ let g:NeoComplCache_KeywordPatterns['default'] = '\v\h\w*'
 let g:NeoComplCache_SnippetsDir=$HOME.'/snippets'
 
 noremap <C-N><C-O><C-E> :NeoComplCacheEnable<CR>
-noremap <C-N><C-O><C-D> :NeoComplCacheEnable<CR>
+noremap <C-N><C-O><C-D> :NeoComplCacheDisable<CR>
 
