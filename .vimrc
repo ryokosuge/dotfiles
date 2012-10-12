@@ -21,6 +21,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-cucumber'
 Bundle 'itspriddle/vim-javascript-indent'
+Bundle 'kchmck/vim-coffee-script'
 " ********** vim-scriptにあるプラグイン ********** "
 " ex) 'file_name'
 Bundle 'JavaScript-syntax'
