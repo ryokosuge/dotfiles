@@ -23,6 +23,7 @@ Bundle 'tpope/vim-cucumber'
 Bundle 'itspriddle/vim-javascript-indent'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'groenewege/vim-less'
 " ********** vim-scriptにあるプラグイン ********** "
 " ex) 'file_name'
 Bundle 'JavaScript-syntax'
