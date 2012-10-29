@@ -82,6 +82,7 @@ set nowrapscan
 "-------------------------------------------------------------------------------
 autocmd BufNewFile,BufRead *.vimrc set filetype=vim
 autocmd BufNewFile,BufRead *.phtml set filetype=html
+autocmd BufNewFile,BufRead *.less set filetype=less
 autocmd FileType eruby,html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
