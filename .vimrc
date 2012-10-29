@@ -263,6 +263,12 @@ endif
 let g:NeoComplCache_KeywordPatterns['default'] = '\v\h\w*'
 let g:NeoComplCache_SnippetsDir=$HOME.'/snippets'
 
-noremap <C-N><C-C><C-E> :NeoComplCacheEnable<CR>
-noremap <C-N><C-C><C-D> :NeoComplCacheDisable<CR>
+" 改行で補完ウィンドウを閉じる
+inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
+" tabで補完候補選択
+inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<Up>" ; "\<S-TAB>"
+
+noremap <C-N><C-E> :NeoComplCacheEnable<CR>
+noremap <C-N><C-D> :NeoComplCacheDisable<CR>
 
