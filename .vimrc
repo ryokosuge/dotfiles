@@ -15,6 +15,7 @@ call vundle#rc()
 Bundle 'Shougo/neocomplcache'
 Bundle 'thinca/vim-quickrun'
 Bundle 'Shougo/unite.vim'
+Bundle 'h1mesuke/unite-outline'
 Bundle 'othree/html5.vim'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'vim-ruby/vim-ruby'
@@ -229,6 +230,12 @@ noremap <C-U><C-A> :Unite UniteWithBufferDir -buffer-name=files buffer file_mru 
 " ESCキーを2回押すと終了する
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+
+"-------------------------------------------------------------------------------
+""" unite-outline.vim プラグイン
+"-------------------------------------------------------------------------------
+" アウトライン一覧表示
+noremap <C-U><C-O> :Unite -vertical -winwidth=30 outline<CR>
 
 "-------------------------------------------------------------------------------
 """ neocomplcache.vim プラグイン
