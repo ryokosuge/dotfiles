@@ -235,7 +235,7 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 """ unite-outline.vim プラグイン
 "-------------------------------------------------------------------------------
 " アウトライン一覧表示
-noremap <C-U><C-O> :Unite -vertical -winwidth=30 outline<CR>
+noremap <C-U><C-O> :Unite -vertical -winwidth=30 -no-quit outline<CR>
 
 "-------------------------------------------------------------------------------
 """ neocomplcache.vim プラグイン
