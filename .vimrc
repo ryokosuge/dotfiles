@@ -19,7 +19,6 @@ Bundle 'othree/html5.vim'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
-Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-cucumber'
 Bundle 'itspriddle/vim-javascript-indent'
 Bundle 'kchmck/vim-coffee-script'
@@ -50,9 +49,14 @@ set showcmd
 "" タブ設定
 "-------------------------------------------------------------------------------
 " ファイルの<tab>が対応する空白の数
-set tabstop=4
+" Ruby用
+set tabstop=2
 " シフト移動幅
-set shiftwidth=4
+set shiftwidth=2
+" Ruby用 <- インデントが気に入らなければ上をコメントアウトしてこっち変更して
+set tabstop=2
+" シフト移動幅
+set shiftwidth=2
 " タブの代わりに空白文字を使う
 set expandtab
 "-------------------------------------------------------------------------------
