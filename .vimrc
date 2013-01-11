@@ -7,24 +7,23 @@ set nocompatible
 
 filetype off
 
-set rtp+=~/dotfiles/vimfiles/vundle.git/
+set rtp+=~/dotfiles/vimfiles/vundle.git
 call vundle#rc()
 
 " ********** githubにあるプラグイン ********** "
 " ex) 'account / repository'
 Bundle 'Shougo/neocomplcache'
-Bundle 'thinca/vim-quickrun'
 Bundle 'Shougo/unite.vim'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'othree/html5.vim'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
+Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-cucumber'
 Bundle 'itspriddle/vim-javascript-indent'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'groenewege/vim-less'
 " ********** vim-scriptにあるプラグイン ********** "
 " ex) 'file_name'
 Bundle 'JavaScript-syntax'
