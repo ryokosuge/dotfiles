@@ -23,6 +23,7 @@ Bundle 'tpope/vim-cucumber'
 Bundle 'itspriddle/vim-javascript-indent'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'brooky-yen/vim-snippet-for-jquery-mobile'
 " ********** vim-scriptにあるプラグイン ********** "
 " ex) 'file_name'
 Bundle 'JavaScript-syntax'
@@ -38,7 +39,7 @@ filetype plugin indent on
 set encoding=utf-8
 set ruler
 " 行番号を表示
-set number
+" set number
 " ファイル名を表示
 set title
 " 閉じ括弧が入力された時、対応する括弧を表示する
@@ -238,7 +239,7 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 """ unite-outline.vim プラグイン
 "-------------------------------------------------------------------------------
 " アウトライン一覧表示
-noremap <C-U><C-O> :Unite -vertical -winwidth=30 -no-quit outline<CR>
+noremap <C-U><C-O> :Unite -vertical -winwidth=30 outline<CR>
 
 "-------------------------------------------------------------------------------
 """ neocomplcache.vim プラグイン
