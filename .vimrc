@@ -24,6 +24,7 @@ Bundle 'itspriddle/vim-javascript-indent'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'brooky-yen/vim-snippet-for-jquery-mobile'
+Bundle 'scrooloose/syntastic'
 " ********** vim-scriptにあるプラグイン ********** "
 " ex) 'file_name'
 Bundle 'JavaScript-syntax'
@@ -283,3 +284,19 @@ inoremap <expr><S-TAB> pumvisible() ? "\<Up>" ; "\<S-TAB>"
 noremap <C-N><C-E> :NeoComplCacheEnable<CR>
 noremap <C-N><C-D> :NeoComplCacheDisable<CR>
 
+"------------------------------------------------------------------------------
+""" scrooloose/syntastic
+"------------------------------------------------------------------------------
+let g:syntastic_check_on_open = 1
+let g:syntastic_echo_current_error = 1
+let g:syntastic_enable_balloons = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_enable_highlighting = 1
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_auto_jump = 1
+let g:syntastic_loc_list_height = 5
+
+" 構文チェックを行いたいファイルタイプを指定
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby', 'php'], 'passive_filetypes': [] }
+
+let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
