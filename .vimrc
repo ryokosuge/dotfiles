@@ -1,6 +1,5 @@
 " ********** vim の設定 ********** "
-"-------------------------------------------------------------------------------
-""" vendle.vim プラグイン
+"------------------------------------------------------------------------------- """ vendle.vim プラグイン
 "-------------------------------------------------------------------------------
 
 set nocompatible
@@ -15,6 +14,8 @@ call vundle#rc()
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
 Bundle 'h1mesuke/unite-outline'
+Bundle 'kannokanno/previm'
+Bundle 'tyru/open-browser.vim'
 Bundle 'othree/html5.vim'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'vim-ruby/vim-ruby'
@@ -52,12 +53,12 @@ set showcmd
 "-------------------------------------------------------------------------------
 " ファイルの<tab>が対応する空白の数 (PHP用)
 " シフト移動幅
-set tabstop=4
-set shiftwidth=4
+" set tabstop=4
+" set shiftwidth=4
 " Ruby用 <- インデントが気に入らなければ上をコメントアウトしてこっち変更して
 " シフト移動幅
-" set tabstop=2
-" set shiftwidth=2
+set tabstop=2
+set shiftwidth=2
 
 " タブの代わりに空白文字を使う
 set expandtab
@@ -361,3 +362,14 @@ map <silent> [Tag]x :tabclose<CR>
 map <silent> [Tag]n :tabnext<CR>
 " tp : 前のタブ
 map <silent> [Tag]p :tabprevious<CR>
+
+"------------------------------------------------------------------------------
+""" Open-Browser.vim
+"------------------------------------------------------------------------------
+" カーソル下のURLをブラウザで開く
+nmap <Leader>o <Plug>(openbrowser-open)
+vmap <Leader>o <Plug>(openbrowser-open)
+
+" ググる
+nnoremap <Leader>g :<C-u>OpenBrowserSearch<Space><C-r><C-r><Enter>
+
