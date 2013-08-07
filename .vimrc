@@ -1,26 +1,31 @@
 " ********** vim の設定 ********** "
-"-------------------------------------------------------------------------------
-""" vendle.vim プラグイン
+"------------------------------------------------------------------------------- """ vendle.vim プラグイン
 "-------------------------------------------------------------------------------
 
 set nocompatible
 
 filetype off
 
-set rtp+=~/dotfiles/vimfiles/vundle.git/
+set rtp+=~/dotfiles/vimfiles/vundle.git
 call vundle#rc()
 
 " ********** githubにあるプラグイン ********** "
 " ex) 'account / repository'
 Bundle 'Shougo/neocomplcache'
-Bundle 'thinca/vim-quickrun'
 Bundle 'Shougo/unite.vim'
+Bundle 'h1mesuke/unite-outline'
+Bundle 'kannokanno/previm'
+Bundle 'tyru/open-browser.vim'
 Bundle 'othree/html5.vim'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-cucumber'
 Bundle 'itspriddle/vim-javascript-indent'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'brooky-yen/vim-snippet-for-jquery-mobile'
+Bundle 'scrooloose/syntastic'
 " ********** vim-scriptにあるプラグイン ********** "
 " ex) 'file_name'
 Bundle 'JavaScript-syntax'
@@ -36,7 +41,7 @@ filetype plugin indent on
 set encoding=utf-8
 set ruler
 " 行番号を表示
-set number
+" set number
 " ファイル名を表示
 set title
 " 閉じ括弧が入力された時、対応する括弧を表示する
@@ -46,10 +51,15 @@ set showcmd
 "-------------------------------------------------------------------------------
 "" タブ設定
 "-------------------------------------------------------------------------------
-" ファイルの<tab>が対応する空白の数
-set tabstop=4
+" ファイルの<tab>が対応する空白の数 (PHP用)
 " シフト移動幅
-set shiftwidth=4
+" set tabstop=4
+" set shiftwidth=4
+" Ruby用 <- インデントが気に入らなければ上をコメントアウトしてこっち変更して
+" シフト移動幅
+set tabstop=2
+set shiftwidth=2
+
 " タブの代わりに空白文字を使う
 set expandtab
 "-------------------------------------------------------------------------------
@@ -68,15 +78,18 @@ set ignorecase
 set nowrapscan
 
 "-------------------------------------------------------------------------------
-"" バックアップファイルの設定
+"" バックアップファイルとswapの設定
 "-------------------------------------------------------------------------------
-set backup
-set backupdir=~/dotfiles/.vim-backup
-let&directory=&backupdir
+" swapファイルを作成しない
+:set noswapfile
+" backupファイルを作成しない
+:set nobackup
 "-------------------------------------------------------------------------------
 "" ファイルの種類とomni
 "-------------------------------------------------------------------------------
 autocmd BufNewFile,BufRead *.vimrc set filetype=vim
+autocmd BufNewFile,BufRead *.phtml set filetype=html
+autocmd BufNewFile,BufRead *.less set filetype=less
 autocmd FileType eruby,html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -164,6 +177,16 @@ inoremap <C-l> <Right>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
 
+" <Ctrl>e で行の最後に挿入
+" <Ctrl>a で行の最初に挿入
+map! <C-e> <Esc>$a
+map! <C-a> <Esc>^a
+map <C-e> <Esc>$a
+map <C-a> <Esc>^a
+
+" <Ctrl>h で一つ前の文字を削除 -> 入力モードに
+inoremap <C-h> <Esc>xa
+
 "-------------------------------------------------------------------------------
 """ ハイライト設定
 "-------------------------------------------------------------------------------
@@ -225,13 +248,17 @@ au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 "-------------------------------------------------------------------------------
+""" unite-outline.vim プラグイン
+"-------------------------------------------------------------------------------
+" アウトライン一覧表示
+noremap <C-U><C-O> :Unite -vertical -winwidth=30 outline<CR>
+
+"-------------------------------------------------------------------------------
 """ neocomplcache.vim プラグイン
 "-------------------------------------------------------------------------------
 " AutoComplPop を無効かする設定
 let g:acp_enableAtStartup=0
 " neocomplcache を起動時に有効化
-"let g:Neocomplcache_EnableAtStartup=1
-"let g:NeoComplCache_EnableAtStartup = 1
 let g:neocomplcache_enable_at_startup = 1
 " neocomplcache の smart case 機能を有効化
 let g:Neocomplcache_SmartCase=1
@@ -259,6 +286,90 @@ endif
 let g:NeoComplCache_KeywordPatterns['default'] = '\v\h\w*'
 let g:NeoComplCache_SnippetsDir=$HOME.'/snippets'
 
-noremap <C-N><C-O><C-E> :NeoComplCacheEnable<CR>
-noremap <C-N><C-O><C-D> :NeoComplCacheEnable<CR>
+" 改行で補完ウィンドウを閉じる
+inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
+" tabで補完候補選択
+inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<Up>" ; "\<S-TAB>"
+
+noremap <C-N><C-E> :NeoComplCacheEnable<CR>
+noremap <C-N><C-D> :NeoComplCacheDisable<CR>
+
+"------------------------------------------------------------------------------
+""" scrooloose/syntastic
+"------------------------------------------------------------------------------
+let g:syntastic_check_on_open = 1
+let g:syntastic_echo_current_error = 1
+let g:syntastic_enable_balloons = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_enable_highlighting = 1
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_auto_jump = 1
+let g:syntastic_loc_list_height = 5
+
+" 構文チェックを行いたいファイルタイプを指定
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby', 'php'], 'passive_filetypes': [] }
+
+let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+
+"------------------------------------------------------------------------------
+""" タブ
+"------------------------------------------------------------------------------
+" Anywhere SID.
+function! s:SID_PREFIX()
+    return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
+endfunction
+
+" set tabline
+function! s:my_tabline()
+    let s = ''
+    for i in range(1, tabpagenr('$'))
+        let bufnrs = tabpagebuflist(i)
+        " first window, first appears.
+        let bufnr = bufnrs[tabpagewinnr(i) -1]
+        " display 0-origin tabpagenr.
+        let no = i
+        let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
+        let title = fnamemodify(bufname(bufnr), ':t')
+        let title = '['.title.']'
+        let s .= '%'.i.'T'
+        let s .= '%#'.(i == tabpagenr() ? 'TabLineSel' : 'TabLine').'#'
+        let s .= no.':'.title
+        let s .= mod
+    endfor
+    let s .= '%#TabLineFill#%T%=%#TabLine#'
+    return s
+endfunction
+
+let &tabline = '%!'.s:SID_PREFIX().'my_tabline()'
+" 常にタブラインを表示
+set showtabline=2
+
+" The prfix key
+nnoremap [Tag] <Nop>
+nmap t [Tag]
+" Tab jump
+for n in range(1, 9)
+    " t1 で1番左のタブ、t2で1番左から2番目のタブにジャンプ
+    execute 'nnoremap <silent> [Tag]'.n ':<C-u>tabnext'.n.'<CR>'
+endfor
+
+" tc : 新しいタブを一番右に作る
+map <silent> [Tag]c :tablast <bar> tabnew<CR>
+" tx : タブを閉じる
+map <silent> [Tag]x :tabclose<CR>
+" tn : 次のタブ
+map <silent> [Tag]n :tabnext<CR>
+" tp : 前のタブ
+map <silent> [Tag]p :tabprevious<CR>
+
+"------------------------------------------------------------------------------
+""" Open-Browser.vim
+"------------------------------------------------------------------------------
+" カーソル下のURLをブラウザで開く
+nmap <Leader>o <Plug>(openbrowser-open)
+vmap <Leader>o <Plug>(openbrowser-open)
+
+" ググる
+nnoremap <Leader>g :<C-u>OpenBrowserSearch<Space><C-r><C-r><Enter>
 
